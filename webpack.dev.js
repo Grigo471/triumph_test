@@ -8,13 +8,14 @@ module.exports = {
   mode: 'development',
   entry: './src/index.js',
   output: {
-    filename: 'webcomp-boilerplate.js',
+    filename: 'index.js',
     clean: true
   },
   devServer: {
     static: './public',
-    port: 8998,
-    hot: true
+    port: 3000,
+    hot: true,
+    webSocketServer: false,
   },
   devtool: 'inline-source-map',
 };

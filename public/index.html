@@ -1,37 +1,48 @@
-<!--
-SPDX-FileCopyrightText: NOI Techpark <digital@noi.bz.it>
-
-SPDX-License-Identifier: CC0-1.0
--->
-
-<!-- Example of how you implement a webcomponent in a website -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="data:,">
-  <title>Hello World!</title>
+  <link href="global.css" rel="stylesheet" />
+  <title>Grigo WYSIWYG Test</title>
+  <script src="https://cdn.tiny.cloud/1/kfs8hzh78fded0dwn2b6bmx6yz7os01rzbnccrh0506x9its/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <body>
+  <script>
+    tinymce.init({
+        selector: 'textarea',
+        toolbar: "insertDropdown",
+        menubar: false,
+        statusbar: false,
+        valid_elements: 'select[is]',
+        init_instance_callback: function (editor) {
+          const edDoc = editor.getDoc();
+          const scriptTag = edDoc.createElement('script');
+          scriptTag.src = 'index.js';
+          edDoc.querySelector('head').appendChild(scriptTag);
+        },
+        setup: (editor) => {
+          editor.ui.registry.addButton('insertDropdown', {
+            text: 'insert',
+            onAction: (_) => {
+              editor.insertContent('<select is="custom-dropdown"></select>');
+            },
+          });
+        }
+      });
+  </script>
 
-  <h1>Web Component - Boilerplate & Helloworld</h1>
-
-  Code Snippet:
-  <pre><code>
-    &lt;hello-world title="Hello World!"&gt;&lt;/hello-world&gt;
-
-    &lt;script src="webcomp-boilerplate.js"&gt;&lt;/script&gt;
-  </code></pre>
-
-
-  Output:
-  <!-- Set the attribute "title" and refer to it as property in JS -->
-  <hello-world title="Hello World!" />
-  <script src="webcomp-boilerplate.js"></script>
-
+  <h1>Тестовое задание, Григорьев Сергей</h1>
+  <div class="grid">
+    <textarea placeholder="Введите текст"></textarea>
+    <div class="right">
+      <templates-list></templates-list>
+      <template-editor></template-editor>
+    </div>
+  </div>
+  <script src="index.js" async></script>
 </body>
 
 </html>
