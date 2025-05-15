@@ -1,5 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --dark-background: #113f67;
+    --text-color: #e7eaf6;
+    --middle-background: #38598b;
+}
+
+* {
+    color: var(--text-color);
+    font-family: "Roboto", sans-serif;
+}
+
 body {
     display: flex;
+    background: var(--middle-background);
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -7,22 +21,76 @@ body {
 
 .grid {
     display: grid;
-    grid-template-columns: 1fr 200px;
-    width: 1000px;
+    grid-template-columns: 1fr 240px;
+    width: 90%;
+    max-width: 1000px;
+}
+
+.right {
+    padding: 24px;
 }
 
 templates-list {
     display: flex;
     flex-direction: column;
-    padding: 24px;
 }
 
 .templatesWrapper {
+    background-color: var(--dark-background);
     display: flex;
     flex-direction: column;
     gap: 12px;
+    padding: 16px;
+    max-height: 120px;
+    overflow-y: auto;
+    border-radius: 5px;
 }
 
-button.active {
-    color: red;
+.templateBtn {
+    width: 100%;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.templateBtn.active {
+    background-color: var(--middle-background);
+}
+
+.templatesToolbar{
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.templatesToolbar button{
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    color: var(--text-color);
+}
+
+.add {
+    background-color: darkseagreen;
+}
+
+.delete {
+    background-color: darkred;
+}
+
+.editorInput {
+    background-color: var(--dark-background);
+    border: none;
+    outline: none;
+    border-radius: 2px;
+}
+
+.tox.tox-tinymce {
+    background: #a2a8d3;
+}
+
+.tox button{
+    background-color: #113f67;
 }
